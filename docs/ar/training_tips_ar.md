@@ -1,64 +1,64 @@
 تعليمات ونصائح لتدريب RVC
 ======================================
 هذه النصائح تشرح كيفية إجراء تدريب البيانات.
-# Training flow
-I will explain along the steps in the training tab of the GUI.
+# مسار التدريب
+سأقوم بالشرح أثناء استعراض الخطوات الموجودة في علامة تبويب "التدريب" (Training) في الواجهة الرسومية.
 
-## step1
-Set the experiment name here. 
+## الخطوة 1
+حدد اسم التجربة هنا.
 
-You can also set here whether the model should take pitch into account.
-If the model doesn't consider pitch, the model will be lighter, but not suitable for singing.
+يمكنك أيضاً تحديد ما إذا كان ينبغي للنموذج أن يأخذ درجة الصوت (الطبقة الصوتية) في الاعتبار.
+إذا لم يأخذ النموذج طبقة الصوت في الاعتبار، فسيكون أخف وزناً، ولكنه لن يكون مناسباً للغناء.
 
-Data for each experiment is placed in `/logs/your-experiment-name/`.
+تُوضع بيانات كل تجربة في المسار `/logs/your-experiment-name/`.
 
-## step2a
-Loads and preprocesses audio.
+## الخطوة 2أ
+يُحمِّل الصوت ويُجري عليه المعالجة الأولية.
 
-### load audio
-If you specify a folder with audio, the audio files in that folder will be read automatically.
-For example, if you specify `C:Users\hoge\voices`, `C:Users\hoge\voices\voice.mp3` will be loaded, but `C:Users\hoge\voices\dir\voice.mp3` will Not loaded.
+### تحميل الصوت
+إذا حددت مجلداً يحتوي على ملفات صوتية، فسيتم قراءة تلك الملفات تلقائياً.
+على سبيل المثال، إذا حددت المسار `C:\Users\hoge\voices`، فسيتم تحميل الملف `C:\Users\hoge\voices\voice.mp3`، ولكن لن يتم تحميل الملف `C:\Users\hoge\voices\dir\voice.mp3`.
 
-Since ffmpeg is used internally for reading audio, if the extension is supported by ffmpeg, it will be read automatically.
-After converting to int16 with ffmpeg, convert to float32 and normalize between -1 to 1.
+بما أن ffmpeg يُستخدم داخلياً لقراءة الصوت، فإذا كان الامتداد مدعوماً من قِبَل ffmpeg، فسيتم قراءته تلقائياً.
+بعد التحويل إلى int16 باستخدام ffmpeg، قم بالتحويل إلى float32 وقم بإجراء عملية التطبيع (normalization) لتكون القيم في النطاق من -1 إلى 1.
 
-### denoising
-The audio is smoothed by scipy's filtfilt.
+### إزالة الضوضاء
+تتم تنعيم الإشارة الصوتية باستخدام الدالة `filtfilt` من مكتبة `scipy`.
 
-### Audio Split
-First, the input audio is divided by detecting parts of silence that last longer than a certain period (max_sil_kept=5 seconds?). After splitting the audio on silence, split the audio every 4 seconds with an overlap of 0.3 seconds. For audio separated within 4 seconds, after normalizing the volume, convert the wav file to `/logs/your-experiment-name/0_gt_wavs` and then convert it to 16k sampling rate to `/logs/your-experiment-name/1_16k_wavs ` as a wav file.
+### تقسيم الصوت
+أولاً، يتم تقسيم الصوت المُدخل عن طريق رصد فترات الصمت التي تتجاوز مدة زمنية محددة (على سبيل المثال: max_sil_kept=5 ثوانٍ). وبعد تقسيم الصوت بناءً على فترات الصمت، يتم تقطيع الصوت إلى مقاطع مدة كل منها 4 ثوانٍ مع تداخل زمني قدره 0.3 ثانية. وبالنسبة للمقاطع الصوتية التي تبلغ مدتها 4 ثوانٍ، وبعد تسوية مستوى الصوت (normalization)، يتم حفظ الملف بصيغة wav في المسار `/logs/your-experiment-name/0_gt_wavs`، ثم تحويله إلى معدل أخذ عينات (sampling rate) يبلغ 16 كيلو هرتز وحفظه بصيغة wav في المسار `/logs/your-experiment-name/1_16k_wavs`.
 
-## step2b
-### Extract pitch
-Extract pitch information from wav files. Extract the pitch information (=f0) using the method built into parselmouth or pyworld and save it in `/logs/your-experiment-name/2a_f0`. Then logarithmically convert the pitch information to an integer between 1 and 255 and save it in `/logs/your-experiment-name/2b-f0nsf`.
+## الخطوة 2ب
+### استخراج درجة النغمة
+استخرج معلومات طبقة الصوت (pitch) من ملفات wav. استخرج معلومات طبقة الصوت (أي f0) باستخدام الطريقة المدمجة في parselmouth أو pyworld واحفظها في المسار `/logs/your-experiment-name/2a_f0`. بعد ذلك، حوّل معلومات طبقة الصوت لوغاريتميًا إلى عدد صحيح يتراوح بين 1 و255 واحفظ النتيجة في المسار `/logs/your-experiment-name/2b-f0nsf`.
 
-### Extract feature_print
-Convert the wav file to embedding in advance using HuBERT. Read the wav file saved in `/logs/your-experiment-name/1_16k_wavs`, convert the wav file to 256-dimensional features with HuBERT, and save in npy format in `/logs/your-experiment-name/3_feature256`.
+### استخراج بصمة الميزة
+قم بتحويل ملف wav مسبقاً إلى تمثيلات متجهة (embeddings) باستخدام نموذج HuBERT؛ حيث يتعين عليك قراءة ملف wav المحفوظ في المسار `/logs/your-experiment-name/1_16k_wavs`، وتحويله إلى ميزات ذات 256 بُعداً باستخدام HuBERT، ثم حفظ النتيجة بصيغة npy في المسار `/logs/your-experiment-name/3_feature256`.
 
-## step3
-train the model.
-### Glossary for Beginners
-In deep learning, the data set is divided and the learning proceeds little by little. In one model update (step), batch_size data are retrieved and predictions and error corrections are performed. Doing this once for a dataset counts as one epoch.
+## الخطوة 3
+تدريب النموذج.
+### مسرد للمبتدئين
+في التعلم العميق، تُقسَّم مجموعة البيانات وتتم عملية التعلم تدريجياً. ففي كل عملية تحديث للنموذج (أي في كل خطوة)، يتم استرجاع مجموعة بيانات بحجم محدد (batch_size) وإجراء التنبؤات وتصحيح الأخطاء؛ ويُعد إتمام هذه العملية مرة واحدة لكامل مجموعة البيانات بمثابة "دورة تدريبية" واحدة (epoch).
 
-Therefore, the learning time is the learning time per step x (the number of data in the dataset / batch size) x the number of epochs. In general, the larger the batch size, the more stable the learning becomes (learning time per step ÷ batch size) becomes smaller, but it uses more GPU memory. GPU RAM can be checked with the nvidia-smi command. Learning can be done in a short time by increasing the batch size as much as possible according to the machine of the execution environment.
+وبناءً على ذلك، يُحسب زمن التعلم وفق المعادلة التالية: (زمن التعلم لكل خطوة) × (عدد البيانات في مجموعة البيانات ÷ حجم الدفعة) × (عدد الدورات التدريبية/الحقبات). وبشكل عام، كلما زاد حجم الدفعة، أصبح التعلم أكثر استقراراً وقلّت قيمة "زمن التعلم لكل خطوة ÷ حجم الدفعة"، إلا أن ذلك يستهلك قدراً أكبر من ذاكرة وحدة معالجة الرسومات (GPU). ويمكن التحقق من حالة ذاكرة وحدة معالجة الرسومات باستخدام الأمر `nvidia-smi`. كما يمكن إنجاز عملية التعلم في وقت قصير من خلال زيادة حجم الدفعة إلى أقصى حد ممكن بما يتناسب مع إمكانيات الجهاز المستخدم في بيئة التشغيل.
 
-### Specify pretrained model
-RVC starts training the model from pretrained weights instead of from 0, so it can be trained with a small dataset.
+### حدد النموذج المُدرَّب مسبقاً
+تبدأ تقنية RVC في تدريب النموذج باستخدام أوزان مُدَرَّبة مسبقاً بدلاً من البدء من الصفر، مما يتيح تدريبه باستخدام مجموعة بيانات صغيرة.
 
-By default
+بشكل افتراضي
+- إذا أخذت طبقة الصوت (pitch) في الاعتبار، فسيتم تحميل الملفين `rvc-location/pretrained/f0G40k.pth` و `rvc-location/pretrained/f0D40k.pth`.
+- إذا لم تأخذ طبقة الصوت (pitch) في الاعتبار، فسيتم تحميل الملفين `rvc-location/pretrained/f0G40k.pth` و `rvc-location/pretrained/f0D40k.pth`.
 
-- If you consider pitch, it loads `rvc-location/pretrained/f0G40k.pth` and `rvc-location/pretrained/f0D40k.pth`. 
-- If you don't consider pitch, it loads `rvc-location/pretrained/f0G40k.pth` and `rvc-location/pretrained/f0D40k.pth`. 
+أثناء عملية التعلم، تُحفظ معاملات النموذج في المسارين `logs/your-experiment-name/G_{}.pth` و `logs/your-experiment-name/D_{}.pth` عند كل فاصل زمني محدد للحفظ (save_every_epoch)، ويمكنك بدء عملية التعلم من خلال تحديد هذا المسار. كما يمكنك استئناف التدريب أو البدء فيه باستخدام أوزان نموذج تم تعلمها في تجربة مختلفة.
 
-When learning, model parameters are saved in `logs/your-experiment-name/G_{}.pth` and `logs/your-experiment-name/D_{}.pth` for each save_every_epoch, but by specifying this path, you can start learning. You can restart or start training from model weights learned in a different experiment.
+### فهرس التعلم
 
-### learning index
-RVC saves the HuBERT feature values used during training, and during inference, searches for feature values that are similar to the feature values used during learning to perform inference. In order to perform this search at high speed, the index is learned in advance.
-For index learning, we use the approximate neighborhood search library faiss. Read the feature value of `logs/your-experiment-name/3_feature256` and use it to learn the index, and save it as `logs/your-experiment-name/add_XXX.index`.
+يقوم نظام RVC بحفظ قيم سمات HuBERT المستخدمة أثناء التدريب، وعند مرحلة الاستدلال، يبحث عن قيم سمات مشابهة لتلك التي استُخدمت أثناء التعلم لإجراء عملية الاستدلال. ولإجراء هذا البحث بسرعة عالية، يتم تعلُّم الفهرس مسبقاً.
+لغرض تعلّم الفهرس (index learning)، نستخدم مكتبة البحث التقريبي عن الجيران `faiss`. قم بقراءة قيمة الميزة من المسار `logs/your-experiment-name/3_feature256` واستخدمها لتعلّم الفهرس، ثم احفظه بالاسم `logs/your-experiment-name/add_XXX.index`.
 
-(From the 20230428update version, it is read from the index, and saving / specifying is no longer necessary.)
+(ابتداءً من إصدار التحديث 20230428، تتم قراءته من الفهرس، ولم يعد الحفظ / التحديد ضروريًا.)
 
-### Button description
-- Train model: After executing step2b, press this button to train the model.
-- Train feature index: After training the model, perform index learning.
-- One-click training: step2b, model training and feature index training all at once.
+### وصف الزر
+- تدريب النموذج: بعد تنفيذ الخطوة 2ب، اضغط على هذا الزر لتدريب النموذج.
+- فهرس ميزات التدريب: بعد تدريب النموذج، قم بإجراء عملية تعلّم الفهرس.
+- التدريب بنقرة واحدة: تنفيذ الخطوة 2b، وتدريب النموذج، وتدريب فهرس السمات دفعةً واحدة.
