@@ -194,18 +194,14 @@ hf download lj1995/VoiceConversionWebUI rmvpe.onnx --revision main \
   --local-dir assets/rmvpe
 ```
 
-<div style="direction:rtl; text-align:right;">
-
-### FFmpeg
+### محول الصوتيات FFmpeg
 
 يقوم أمر التثبيت الخاص بـ Ubuntu المذكور أعلاه بتثبيت FFmpeg. أما في نظام Windows، فضع هذه الملفات في المجلد الجذري للمستودع:
-
-<ul style="direction:rtl; text-align:right; list-style-position: inside;">
+<ul dir="rtl">
   <li><a href="https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffmpeg.exe?download=true">ffmpeg.exe</a></li>
   <li><a href="https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffprobe.exe?download=true">ffprobe.exe</a></li>
-</ul>
+  </li>
 
-</div>
 
 ## ابدأ واجهة المستخدم المستندة إلى الويب
 
