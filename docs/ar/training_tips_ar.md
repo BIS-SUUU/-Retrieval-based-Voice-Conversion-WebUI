@@ -1,7 +1,6 @@
-Instructions and tips for RVC training
+تعليمات ونصائح لتدريب RVC
 ======================================
-This TIPS explains how data training is done.
-
+هذه النصائح تشرح كيفية إجراء تدريب البيانات.
 # Training flow
 I will explain along the steps in the training tab of the GUI.
 
