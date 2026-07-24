@@ -194,13 +194,18 @@ hf download lj1995/VoiceConversionWebUI rmvpe.onnx --revision main \
   --local-dir assets/rmvpe
 ```
 
+<div style="direction:rtl; text-align:right;">
 
 ### FFmpeg
 
 يقوم أمر التثبيت الخاص بـ Ubuntu المذكور أعلاه بتثبيت FFmpeg. أما في نظام Windows، فضع هذه الملفات في المجلد الجذري للمستودع:
 
-- [ffmpeg.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffmpeg.exe?download=true)
-- [ffprobe.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffprobe.exe?download=true)
+<ul style="direction:rtl; text-align:right; list-style-position: inside;">
+  <li><a href="https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffmpeg.exe?download=true">ffmpeg.exe</a></li>
+  <li><a href="https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffprobe.exe?download=true">ffprobe.exe</a></li>
+</ul>
+
+</div>
 
 ## ابدأ واجهة المستخدم المستندة إلى الويب
 
@@ -216,16 +221,22 @@ python webui.py --noautoopen
 
 المنفذ الافتراضي هو `7865`. ضع نماذج `.pth` الشخصية في `assets/weights/` وملفات `.index` في `assets/indices/`.
 ## طاقم العمل
-+ [ContentVec](https://github.com/auspicious3000/contentvec/)
-+ [VITS](https://github.com/jaywalnut310/vits)
-+ [HIFIGAN](https://github.com/jik876/hifi-gan)
-+ [Gradio](https://github.com/gradio-app/gradio)
-+ [FFmpeg](https://github.com/FFmpeg/FFmpeg)
-+ [Ultimate Vocal Remover](https://github.com/Anjok07/ultimatevocalremovergui)
-+ [pymss-project/pymss](https://github.com/pymss-project/pymss)
-+ [audio-slicer](https://github.com/openvpi/audio-slicer)
-+ [Vocal pitch extraction:RMVPE](https://github.com/Dream-High/RMVPE)
-  + تم تدريب واختبار النموذج المُدرَّب مسبقاً بواسطة  [yxlllc](https://github.com/yxlllc/RMVPE) و [RVC-Boss](https://github.com/RVC-Boss).
+
+<ul dir="rtl">
+  <li><a href="https://github.com/auspicious3000/contentvec/">ContentVec</a></li>
+  <li><a href="https://github.com/jaywalnut310/vits">VITS</a></li>
+  <li><a href="https://github.com/jik876/hifi-gan">HIFIGAN</a></li>
+  <li><a href="https://github.com/gradio-app/gradio">Gradio</a></li>
+  <li><a href="https://github.com/FFmpeg/FFmpeg">FFmpeg</a></li>
+  <li><a href="https://github.com/Anjok07/ultimatevocalremovergui">Ultimate Vocal Remover</a></li>
+  <li><a href="https://github.com/pymss-project/pymss">pymss-project/pymss</a></li>
+  <li><a href="https://github.com/openvpi/audio-slicer">audio-slicer</a></li>
+  <li><a href="https://github.com/Dream-High/RMVPE">استخراج النبرة الصوتية: RMVPE</a>
+    <ul>
+      <li>النموذج المُدرَّب مسبقًا تم تدريبه واختباره بواسطة <a href="https://github.com/yxlllc/RMVPE">yxlllc</a> و <a href="https://github.com/RVC-Boss">RVC-Boss</a>.</li>
+    </ul>
+  </li>
+</ul>
 
 ## شكراً لجميع المساهمين على جهودهم.
 <a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/graphs/contributors" target="_blank">
