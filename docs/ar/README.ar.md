@@ -1,29 +1,29 @@
 <div align="center">
 
 <h1>Retrieval-based-Voice-Conversion-WebUI</h1>
-إطار عمل بسيط وسهل الاستخدام لتحويل جرس الصوت / تغيير الصوت.<br><br>
+A simple, easy-to-use voice timbre conversion / voice changer framework.<br><br>
 
-[![صُنع بـ ❤️](https://img.shields.io/badge/صُنع_بـ-%E2%9D%A4-red?style=for-the-badge&labelColor=orange
+[![madewithlove](https://img.shields.io/badge/made_with-%E2%9D%A4-red?style=for-the-badge&labelColor=orange
 )](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI)
 
 <img src="https://counter.seku.su/cmoe?name=rvc&theme=r34" /><br>
 
-[![الترخيص](https://img.shields.io/github/license/RVC-Project/Retrieval-based-Voice-Conversion-WebUI?style=for-the-badge)](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/LICENSE)
-[![Huggingface](https://img.shields.io/badge/🤗%20-النماذج-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)
+[![Licence](https://img.shields.io/github/license/RVC-Project/Retrieval-based-Voice-Conversion-WebUI?style=for-the-badge)](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/LICENSE)
+[![Huggingface](https://img.shields.io/badge/🤗%20-Models-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)
 
 
-[**سجل التغييرات**](./Changelog_EN.md) | [**الأسئلة الشائعة**](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/wiki/FAQ-(Frequently-Asked-Questions))
+[**Changelog**](./Changelog_EN.md) | [**FAQ (Frequently Asked Questions)**](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/wiki/FAQ-(Frequently-Asked-Questions))
 
-[**الإنجليزية**](../en/README.en.md) | [**الصينية المبسطة**](../../README.md) | [**اليابانية**](../jp/README.ja.md) | [**الكورية**](../kr/README.ko.md) ([**الکورية (الهانجا)**](../kr/README.ko.han.md)) | [**الفرنسية**](../fr/README.fr.md) | [**التركية**](../tr/README.tr.md) | [**البرتغالية**](../pt/README.pt.md)
+[**English**](../en/README.en.md) | [**中文简体**](../../README.md) | [**日本語**](../jp/README.ja.md) | [**한국어**](../kr/README.ko.md) ([**韓國語**](../kr/README.ko.han.md)) | [**Français**](../fr/README.fr.md) | [**Türkçe**](../tr/README.tr.md) | [**Português**](../pt/README.pt.md)
 
 </div>
 
-> شاهد [فيديو العرض التوضيحي](https://www.bilibili.com/video/BV1pm4y1z7Gm/) هنا!
+> Check out our [Demo Video](https://www.bilibili.com/video/BV1pm4y1z7Gm/) here!
 
 <table>
    <tr>
-		<td align="center">واجهة الويب للتدريب والاستدلال</td>
-		<td align="center">الواجهة الرسومية لتغيير الصوت في الوقت الفعلي</td>
+		<td align="center">Training and inference Webui</td>
+		<td align="center">Real-time voice changing GUI</td>
 	</tr>
   <tr>
 		<td align="center"><img src="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/assets/129054828/092e5c12-0d49-4168-a590-0b0ef6a4f630"></td>
@@ -34,30 +34,30 @@
 		<td align="center">go-realtime_gui.bat</td>
 	</tr>
   <tr>
-    <td align="center">يمكنك اختيار الإجراء الذي تريد تنفيذه بحرية.</td>
-		<td align="center">لقد حققنا زمن انتقال شامل يبلغ 170 مللي ثانية. مع استخدام أجهزة الإدخال والإخراج ASIO، تمكنا من تحقيق زمن انتقال شامل يبلغ 90 مللي ثانية، لكنه يعتمد بشكل كبير على دعم برامج تشغيل الجهاز.</td>
+    <td align="center">You can freely choose the action you want to perform.</td>
+		<td align="center">We have achieved an end-to-end latency of 170ms. With the use of ASIO input and output devices, we have managed to achieve an end-to-end latency of 90ms, but it is highly dependent on hardware driver support.</td>
 	</tr>
 </table>
 
-> تستخدم مجموعة بيانات النموذج المدرب مسبقًا ما يقرب من 50 ساعة من الصوت عالي الجودة من مجموعة البيانات مفتوحة المصدر VCTK.
+> The dataset for the pre-training model uses nearly 50 hours of high quality audio from the VCTK open source dataset.
 
-> ستتم إضافة مجموعات بيانات الأغاني المرخصة عالية الجودة إلى مجموعة التدريب بشكل متكرر لاستخدامك، دون الحاجة إلى القلق بشأن انتهاك حقوق النشر.
+> High quality licensed song datasets will be added to the training-set often for your use, without having to worry about copyright infringement.
 
-> ترقبوا النموذج الأساسي المدرب مسبقًا من RVCv3، الذي يتميز بمعاملات أكبر، وبيانات تدريب أكثر، ونتائج أفضل، وسرعة استدلال دون تغيير، ويتطلب بيانات تدريب أقل للتدريب.
+> Please look forward to the pretrained base model of RVCv3, which has larger parameters, more training data, better results, unchanged inference speed, and requires less training data for training.
 
-## الميزات:
-+ تقليل تسرب النغمة عن طريق استبدال الميزة المصدر بميزة مجموعة التدريب باستخدام استرجاع top1؛
-+ تدريب سهل وسريع، حتى على بطاقات الرسومات الضعيفة؛
-+ التدريب بكميات صغيرة من البيانات (يوصى بـ >=10 دقائق من الكلام منخفض الضوضاء)؛
-+ دمج النماذج لتغيير الأجراس (باستخدام علامة تبويب معالجة ckpt -> دمج ckpt)؛
-+ واجهة ويب سهلة الاستخدام؛
-+ نموذج pymss/MSST لفصل الصوت والآلات الموسيقية بسرعة؛
-+ خوارزمية استخراج النغمة عالية الدقة [InterSpeech2023-RMVPE](#الإشادات) لمنع مشكلة كتم الصوت. توفر أفضل النتائج (بشكل ملحوظ) وهي أسرع مع استهلاك أقل للموارد من Crepe_full؛
-+ تستخدم أنظمة AMD/Intel مجموعة التبعيات المعتمدة على CPU؛ قد يستخدم Windows DirectML بينما يستخدم Linux CPU؛
+## Features:
++ Reduce tone leakage by replacing the source feature to training-set feature using top1 retrieval;
++ Easy + fast training, even on poor graphics cards;
++ Training with a small amounts of data (>=10min low noise speech recommended);
++ Model fusion to change timbres (using ckpt processing tab->ckpt merge);
++ Easy-to-use WebUI;
++ pymss/MSST model to quickly separate vocals and instruments;
++ High-pitch Voice Extraction Algorithm [InterSpeech2023-RMVPE](#Credits) to prevent a muted sound problem. Provides the best results (significantly) and is faster with lower resource consumption than Crepe_full;
++ AMD/Intel systems use the CPU dependency set; Windows may use DirectML and Linux uses CPU;
 
-## إعداد البيئة
+## Environment setup
 
-هذا الفرع موجه لـ **Python 3.12 x64**. قم بتشغيل كل أمر من جذر المستودع. يُوصى باستخدام Ubuntu 24.04 x86_64.
+This branch targets **Python 3.12 x64**. Run every command from the repository root. Ubuntu 24.04 x86_64 is recommended.
 
 ### Ubuntu 24.04
 
@@ -70,9 +70,9 @@ source .venv/bin/activate
 python -m pip install --upgrade pip setuptools wheel
 ```
 
-## Windows
+### Windows
 
-قم أولاً بتثبيت **Python 3.12 x64**، ثم أنشئ بيئة افتراضية:
+Install Python 3.12 x64, then create a virtual environment:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -80,21 +80,21 @@ py -3.12 -m venv .venv
 python -m pip install --upgrade pip setuptools wheel
 ```
 
-# اختيار الحزم المناسبة حسب نوع العتاد
+### Choose dependencies by hardware
 
-| نوع العتاد | طريقة التثبيت |
-|------------|---------------|
-| CPU / AMD / Intel | استخدم `requirments_cpu_py312.txt` |
-| بطاقات RTX 50 | ثبّت Torch الخاص بـ CUDA 12.8 ثم `requirments_cu128_py312.txt` |
-| بطاقات NVIDIA الأقدم | ثبّت Torch الخاص بـ CUDA 11.8 ثم `requirments_cu118_py312.txt` |
+| Hardware | Installation |
+| --- | --- |
+| CPU, AMD, Intel | Use `requirments_cpu_py312.txt`; Windows may use DirectML, while Linux uses CPU |
+| NVIDIA RTX 50 series | Install the CUDA 12.8 Torch pair first, then `requirments_cu128_py312.txt` |
+| NVIDIA GPUs before the RTX 50 series | Install the CUDA 11.8 Torch pair first, then `requirments_cu118_py312.txt` |
 
-#### CPU، AMD، Intel
+#### CPU, AMD, Intel
 
 ```bash
 python -m pip install -r requirments_cpu_py312.txt
 ```
 
-#### بطاقات NVIDIA RTX من سلسلة 50: على مرحلتين
+#### NVIDIA RTX 50 series: two stages
 
 ```bash
 python -m pip install torch==2.7.1+cu128 torchaudio==2.7.1+cu128 \
@@ -103,7 +103,7 @@ python -m pip install torch==2.7.1+cu128 torchaudio==2.7.1+cu128 \
 python -m pip install -r requirments_cu128_py312.txt
 ```
 
-#### بطاقات NVIDIA الأقدم من سلسلة RTX 50: على مرحلتين
+#### NVIDIA GPUs before the RTX 50 series: two stages
 
 ```bash
 python -m pip install torch==2.7.1+cu118 torchaudio==2.7.1+cu118 \
@@ -112,26 +112,27 @@ python -m pip install torch==2.7.1+cu118 torchaudio==2.7.1+cu118 \
 python -m pip install -r requirments_cu118_py312.txt
 ```
 
-تحقق من تثبيت Torch وCUDA:
+Verify Torch and CUDA:
 
 ```bash
 python -c "import torch; print('torch:', torch.__version__); print('cuda:', torch.version.cuda); print('cuda available:', torch.cuda.is_available())"
 ```
 
-### فهارس الحزم
 
-تحدد ملفات `requirments_*.txt` الثلاثة فهارس الحزم الخاصة بها في بداية كل ملف. احتفظ بالمرايا (Mirrors) الافتراضية داخل الصين. وإذا كنت ترغب في استخدام المصادر الرسمية، فاستبدل فقط القيم الخاصة بـ `--index-url` و `--extra-index-url`، مع الإبقاء على إصدارات الحزم، ولاحقة CUDA، وترتيب التثبيت على المرحلتين دون أي تغيير.
+### Package indexes
 
-| المرآة الافتراضية | المصدر الرسمي |
+The three `requirments_*.txt` files define their package indexes at the top. Keep the default mirrors in mainland China. To use official indexes, replace only `--index-url` and `--extra-index-url`; keep package versions, CUDA suffixes, and the two-stage order unchanged.
+
+| Default mirror | Official source |
 | --- | --- |
 | `https://mirrors.pku.edu.cn/pypi/simple` | `https://pypi.org/simple` |
 | `https://mirrors.nju.edu.cn/pytorch/whl/cpu` | `https://download.pytorch.org/whl/cpu` |
 | `https://mirrors.nju.edu.cn/pytorch/whl/cu118` | `https://download.pytorch.org/whl/cu118` |
 | `https://mirrors.nju.edu.cn/pytorch/whl/cu128` | `https://download.pytorch.org/whl/cu128` |
 
-## النماذج ومجلدات التشغيل
+## Models and runtime directories
 
-يقوم WebUI بإنشاء مجلدات التشغيل تلقائيًا. قم بتنزيل النماذج من مستودع نماذج Hugging Face، ثم احتفظ ببنية المجلدات التالية:
+The WebUI creates runtime directories automatically. Download models from the [Hugging Face model repository](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main) and keep this layout:
 
 ```text
 assets/
@@ -143,12 +144,12 @@ assets/
 ├── pretrained/
 ├── pretrained_v2/
 ├── pymss_weights/
-├── weights/        # نماذج RVC الخاصة بالمستخدم بصيغة .pth
-└── indices/        # ملفات .index الخاصة بالمستخدم
+├── weights/        # user RVC .pth models
+└── indices/        # user .index files
 logs/
-└── mute/           # عينات الصمت المستخدمة أثناء التدريب
+└── mute/           # training silence samples
 
-# المسارات الدقيقة التي يستخدمها الكود
+# Exact paths used by the code
 assets/hubert_base/config.json
 assets/hubert_base/preprocessor_config.json
 assets/hubert_base/pytorch_model.bin
@@ -161,61 +162,59 @@ assets/indices/*.index
 logs/mute/*
 ```
 
-### تنزيل النماذج
+### Download models
 
 ```bash
 python -m pip install --upgrade huggingface_hub
 
-# مطلوب للاستدلال واستخراج الخصائص
+# Required for inference and feature extraction
 hf download lj1995/VoiceConversionWebUI --revision main \
   --include "hubert_base/*" --local-dir assets
 hf download lj1995/VoiceConversionWebUI rmvpe.pt --revision main \
   --local-dir assets/rmvpe
 
-# مطلوب لتدريب الإصدارين v1 وv2
+# Required for v1/v2 training
 hf download lj1995/VoiceConversionWebUI --revision main \
   --include "pretrained/*" "pretrained_v2/*" --local-dir assets
 hf download lj1995/VoiceConversionWebUI mute.zip --revision main \
   --local-dir .model-downloads
 python -m zipfile -e .model-downloads/mute.zip logs
 
-# مطلوب فقط لفصل الغناء باستخدام pymss/MSST
+# Required only for pymss/MSST vocal separation
 hf download lj1995/VoiceConversionWebUI --revision main \
   --include "pymss_weights/*" --local-dir assets
 ```
 
-تحتاج بيئات Windows التي تستخدم AMD أو Intel مع DirectML أيضًا إلى:
+Windows AMD/Intel DirectML environments additionally need:
 
 ```bash
 hf download lj1995/VoiceConversionWebUI rmvpe.onnx --revision main \
   --local-dir assets/rmvpe
 ```
 
+
 ### FFmpeg
 
-يقوم أمر إعداد Ubuntu المذكور أعلاه بتثبيت **FFmpeg** تلقائيًا. أما في نظام Windows، فقم بوضع الملفات التالية داخل المجلد الرئيسي للمستودع (Repository):
+The Ubuntu setup command above installs FFmpeg. On Windows, place these files in the repository root:
 
 - [ffmpeg.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffmpeg.exe?download=true)
 - [ffprobe.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/ffprobe.exe?download=true)
 
-## تشغيل WebUI
+## Start the WebUI
 
 ```bash
 python webui.py
 ```
 
-بالنسبة لخادم Ubuntu الذي يعمل بدون واجهة رسومية (Headless):
+For a headless Ubuntu server:
 
 ```bash
 python webui.py --noautoopen
 ```
 
-المنفذ (Port) الافتراضي هو `7865`.
+The default port is `7865`. Put personal `.pth` models in `assets/weights/` and `.index` files in `assets/indices/`.
 
-ضع نماذج `.pth` الخاصة بك داخل `assets/weights/`، وضع ملفات `.index` داخل `assets/indices/`.
-
-## الاعتمادات (Credits)
-
+## Credits
 + [ContentVec](https://github.com/auspicious3000/contentvec/)
 + [VITS](https://github.com/jaywalnut310/vits)
 + [HIFIGAN](https://github.com/jik876/hifi-gan)
@@ -225,10 +224,9 @@ python webui.py --noautoopen
 + [pymss-project/pymss](https://github.com/pymss-project/pymss)
 + [audio-slicer](https://github.com/openvpi/audio-slicer)
 + [Vocal pitch extraction:RMVPE](https://github.com/Dream-High/RMVPE)
-  + تم تدريب النموذج المُسبق واختباره بواسطة [yxlllc](https://github.com/yxlllc/RMVPE) و [RVC-Boss](https://github.com/RVC-Boss).
+  + The pretrained model is trained and tested by [yxlllc](https://github.com/yxlllc/RMVPE) and [RVC-Boss](https://github.com/RVC-Boss).
 
-## شكرًا لجميع المساهمين على جهودهم
-
+## Thanks to all contributors for their efforts
 <a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=RVC-Project/Retrieval-based-Voice-Conversion-WebUI" />
 </a>
